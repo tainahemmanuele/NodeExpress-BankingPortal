@@ -3,12 +3,13 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/public/')));
-app.use('/css', express.static(path.join(__dirname, '/public/css')));
-app.use('/js', express.static(path.join(__dirname, '/public/js')));
-app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
-app.set('views', express.static(path.join(__dirname, '/views/')));
+
+//app.use('/css', express.static(path.join(__dirname, '/public/css')));
+//app.use('/js', express.static(path.join(__dirname, '/public/js')));
+//app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '/public/')));
 
 app.get('/', (req, res) => {
     res.render('index',
